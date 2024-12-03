@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: jonathaneberle <jonathaneberle@student.    +#+  +:+       +#+         #
+#    By: jeberle <jeberle@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2024/11/22 20:56:47 by joeberle          #+#    #+#              #
-#    Updated: 2024/11/25 09:12:05 by jonathanebe      ###   ########.fr        #
+#    Created: 2024/11/22 20:56:47 by jeberle           #+#    #+#              #
+#    Updated: 2024/11/26 13:27:11 by jeberle          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
