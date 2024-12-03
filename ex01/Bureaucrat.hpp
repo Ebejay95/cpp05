@@ -6,7 +6,7 @@
 /*   By: jeberle <jeberle@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/25 09:19:04 by jeberle           #+#    #+#             */
-/*   Updated: 2024/12/03 12:54:31 by jeberle          ###   ########.fr       */
+/*   Updated: 2024/12/03 13:46:52 by jeberle          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@
 # include <stdexcept>
 # include <iostream>
 # include "./Form.hpp"
+
+class Form;
 
 class Bureaucrat {
 	private:
@@ -34,7 +36,7 @@ class Bureaucrat {
 
 		void incrementGrade();
 		void decrementGrade();
-		void signForm(Form form);
+		void signForm(Form &form);
 
 		class GradeTooHighException : public std::exception {
 			const char* what() const throw();

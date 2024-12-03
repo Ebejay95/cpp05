@@ -1,82 +1,92 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Form.cpp                                           :+:      :+:    :+:   */
+/*   AForm.cpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jeberle <jeberle@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/25 09:22:41 by jeberle           #+#    #+#             */
-/*   Updated: 2024/12/03 13:44:28 by jeberle          ###   ########.fr       */
+/*   Created: 2024/12/03 13:05:49 by jeberle           #+#    #+#             */
+/*   Updated: 2024/12/03 13:48:21 by jeberle          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "./Form.hpp"
+#include "./AForm.hpp"
 
-Form::Form() :
+AForm::AForm() :
 	name("default"),
 	is_signed(false),
 	required_sign_grade(150),
 	required_exec_grade(150) {}
 
-Form::Form(const std::string _name, int _rsg, int _reg) :
+AForm::AForm(const std::string _name, int _rsg, int _reg) :
 	name(_name),
 	is_signed(false),
 	required_sign_grade(_rsg),
 	required_exec_grade(_reg)
 {
 	if (_rsg < 1 || _reg < 1)
-		throw Form::GradeTooHighException();
+		throw AForm::GradeTooHighException();
 	if (_rsg > 150 || _reg > 150)
-		throw Form::GradeTooLowException();
+		throw AForm::GradeTooLowException();
 }
 
-Form::Form(const Form& other) :
+AForm::AForm(const AForm& other) :
 	name(other.name),
 	is_signed(other.is_signed),
 	required_sign_grade(other.required_sign_grade),
 	required_exec_grade(other.required_exec_grade) {}
 
-Form& Form::operator=(const Form& other) {
+AForm& AForm::operator=(const AForm& other) {
 	if (this != &other) {
-		// Can't copy const members, only copy is_signed
 		is_signed = other.is_signed;
 	}
 	return *this;
 }
 
-Form::~Form() {}
+AForm::~AForm() {}
 
-const std::string Form::getName(void) const {
+const std::string AForm::getName(void) const {
 	return name;
 }
 
-bool Form::getIsSigned(void) const {
+bool AForm::getIsSigned(void) const {
 	return is_signed;
 }
 
-int Form::getRequiredSignGrade(void) const {
+int AForm::getRequiredSignGrade(void) const {
 	return required_sign_grade;
 }
 
-int Form::getRequiredExecGrade(void) const {
+int AForm::getRequiredExecGrade(void) const {
 	return required_exec_grade;
 }
 
-void Form::beSigned(const Bureaucrat& bureaucrat) {
+void AForm::beSigned(const Bureaucrat& bureaucrat) {
 	if (bureaucrat.getGrade() > required_sign_grade)
-		throw Form::GradeTooLowException();
+		throw AForm::GradeTooLowException();
 	is_signed = true;
 }
 
-const char* Form::GradeTooHighException::what() const throw() {
+void AForm::checkExecutePermission(Bureaucrat const & executor) const {
+	if (!is_signed)
+		throw FormNotSignedException();
+	if (executor.getGrade() > required_exec_grade)
+		throw GradeTooLowException();
+}
+
+const char* AForm::GradeTooHighException::what() const throw() {
 	return "Grade is too high!";
 }
 
-const char* Form::GradeTooLowException::what() const throw() {
+const char* AForm::GradeTooLowException::what() const throw() {
 	return "Grade is too low!";
 }
 
-std::ostream& operator<<(std::ostream& os, const Form& form) {
+const char* AForm::FormNotSignedException::what() const throw() {
+	return "Form is not signed!";
+}
+
+std::ostream& operator<<(std::ostream& os, const AForm& form) {
 	os << "Form " << form.getName()
 	<< ", sign grade " << form.getRequiredSignGrade()
 	<< ", exec grade " << form.getRequiredExecGrade()
