@@ -6,7 +6,7 @@
 /*   By: jeberle <jeberle@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/03 13:16:09 by jeberle           #+#    #+#             */
-/*   Updated: 2024/12/03 13:57:37 by jeberle          ###   ########.fr       */
+/*   Updated: 2024/12/04 18:03:26 by jeberle          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,13 +18,14 @@
 class RobotomyRequestForm : public AForm {
 	private:
 		std::string target;
-		static bool seeded;
+		static int counter;
 
 	public:
-		RobotomyRequestForm(std::string target);
+		RobotomyRequestForm();
+		RobotomyRequestForm(std::string target = "default");
 		RobotomyRequestForm(const RobotomyRequestForm& other);
 		RobotomyRequestForm& operator=(const RobotomyRequestForm& other);
-		~RobotomyRequestForm();
+		virtual ~RobotomyRequestForm();
 
 		void execute(Bureaucrat const & executor) const;
 };

@@ -6,7 +6,7 @@
 /*   By: jeberle <jeberle@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/25 09:22:41 by jeberle           #+#    #+#             */
-/*   Updated: 2024/12/03 13:44:28 by jeberle          ###   ########.fr       */
+/*   Updated: 2024/12/04 17:51:07 by jeberle          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,6 @@ Form::Form(const Form& other) :
 
 Form& Form::operator=(const Form& other) {
 	if (this != &other) {
-		// Can't copy const members, only copy is_signed
 		is_signed = other.is_signed;
 	}
 	return *this;
@@ -63,6 +62,8 @@ int Form::getRequiredExecGrade(void) const {
 }
 
 void Form::beSigned(const Bureaucrat& bureaucrat) {
+	if (is_signed)
+		throw Form::AlreadySignedException();
 	if (bureaucrat.getGrade() > required_sign_grade)
 		throw Form::GradeTooLowException();
 	is_signed = true;
@@ -74,6 +75,10 @@ const char* Form::GradeTooHighException::what() const throw() {
 
 const char* Form::GradeTooLowException::what() const throw() {
 	return "Grade is too low!";
+}
+
+const char* Form::AlreadySignedException::what() const throw() {
+	return "Form is already signed!";
 }
 
 std::ostream& operator<<(std::ostream& os, const Form& form) {

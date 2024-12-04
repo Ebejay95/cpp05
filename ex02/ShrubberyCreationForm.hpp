@@ -6,11 +6,10 @@
 /*   By: jeberle <jeberle@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/03 13:19:42 by jeberle           #+#    #+#             */
-/*   Updated: 2024/12/03 13:31:43 by jeberle          ###   ########.fr       */
+/*   Updated: 2024/12/04 18:02:22 by jeberle          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-// ShrubberyCreationForm.hpp
 #ifndef SHRUBBERYCREATIONFORM_HPP
 #define SHRUBBERYCREATIONFORM_HPP
 
@@ -22,10 +21,11 @@ class ShrubberyCreationForm : public AForm {
 		std::string target;
 
 	public:
-		ShrubberyCreationForm(std::string target);
+		ShrubberyCreationForm();
+		ShrubberyCreationForm(std::string target = "default");
 		ShrubberyCreationForm(const ShrubberyCreationForm& other);
 		ShrubberyCreationForm& operator=(const ShrubberyCreationForm& other);
-		~ShrubberyCreationForm();
+		virtual ~ShrubberyCreationForm();
 
 		void execute(Bureaucrat const & executor) const;
 };

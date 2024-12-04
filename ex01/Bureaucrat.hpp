@@ -6,17 +6,17 @@
 /*   By: jeberle <jeberle@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/25 09:19:04 by jeberle           #+#    #+#             */
-/*   Updated: 2024/12/03 13:46:52 by jeberle          ###   ########.fr       */
+/*   Updated: 2024/12/04 17:52:23 by jeberle          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef BUREAUCRAT_HPP
-# define BUREAUCRAT_HPP
+#define BUREAUCRAT_HPP
 
-# include <string>
-# include <stdexcept>
-# include <iostream>
-# include "./Form.hpp"
+#include <string>
+#include <stdexcept>
+#include <iostream>
+#include "./Form.hpp"
 
 class Form;
 
@@ -39,14 +39,15 @@ class Bureaucrat {
 		void signForm(Form &form);
 
 		class GradeTooHighException : public std::exception {
-			const char* what() const throw();
+			public:
+				virtual const char* what() const throw();
 		};
 		class GradeTooLowException : public std::exception {
-			const char* what() const throw();
+			public:
+				virtual const char* what() const throw();
 		};
 
 		friend std::ostream& operator<<(std::ostream& os, const Bureaucrat& bureaucrat);
-
 };
 
 #endif

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jonathaneberle <jonathaneberle@student.    +#+  +:+       +#+        */
+/*   By: jeberle <jeberle@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/04 11:39:59 by jonathanebe       #+#    #+#             */
-/*   Updated: 2024/12/04 11:50:16 by jonathanebe      ###   ########.fr       */
+/*   Updated: 2024/12/04 18:07:37 by jeberle          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,45 +107,45 @@ void testCopyAndAssignment() {
 }
 
 void testIntern() {
-    std::cout << "\n=== Testing Intern ===" << std::endl;
-    
-    Intern intern;
-    Bureaucrat boss("Boss", 1);
+	std::cout << "\n=== Testing Intern ===" << std::endl;
 
-    try {
-        // Test valid form creation
-        AForm* form1 = intern.makeForm("robotomy request", "Bender");
-        if (form1) {
-            boss.signForm(*form1);
-            boss.executeForm(*form1);
-            delete form1;
-        }
+	Intern intern;
+	Bureaucrat boss("Boss", 1);
 
-        // Test presidential pardon form
-        AForm* form2 = intern.makeForm("presidential pardon", "Criminal");
-        if (form2) {
-            boss.signForm(*form2);
-            boss.executeForm(*form2);
-            delete form2;
-        }
+	try {
+		// Test valid form creation
+		AForm* form1 = intern.makeForm("robotomy request", "Bender");
+		if (form1) {
+			boss.signForm(*form1);
+			boss.executeForm(*form1);
+			delete form1;
+		}
 
-        // Test shrubbery creation form
-        AForm* form3 = intern.makeForm("shrubbery creation", "Garden");
-        if (form3) {
-            boss.signForm(*form3);
-            boss.executeForm(*form3);
-            delete form3;
-        }
+		// Test presidential pardon form
+		AForm* form2 = intern.makeForm("presidential pardon", "Criminal");
+		if (form2) {
+			boss.signForm(*form2);
+			boss.executeForm(*form2);
+			delete form2;
+		}
 
-        // Test invalid form name
-        AForm* form4 = intern.makeForm("invalid form", "Target");
-        if (form4) {
-            delete form4;
-        }
-    }
-    catch (std::exception& e) {
-        std::cout << "Exception: " << e.what() << std::endl;
-    }
+		// Test shrubbery creation form
+		AForm* form3 = intern.makeForm("shrubbery creation", "Garden");
+		if (form3) {
+			boss.signForm(*form3);
+			boss.executeForm(*form3);
+			delete form3;
+		}
+
+		// Test invalid form name
+		AForm* form4 = intern.makeForm("invalid form", "Target");
+		if (form4) {
+			delete form4;
+		}
+	}
+	catch (std::exception& e) {
+		std::cout << "Exception: " << e.what() << std::endl;
+	}
 }
 
 int main() {

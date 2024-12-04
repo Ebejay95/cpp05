@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Intern.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jonathaneberle <jonathaneberle@student.    +#+  +:+       +#+        */
+/*   By: jeberle <jeberle@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/04 11:41:32 by jonathanebe       #+#    #+#             */
-/*   Updated: 2024/12/04 11:52:14 by jonathanebe      ###   ########.fr       */
+/*   Updated: 2024/12/04 18:07:28 by jeberle          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,23 +19,23 @@
 #include "ShrubberyCreationForm.hpp"
 
 class Intern {
-    private:
-        AForm* createPresidentialPardonForm(const std::string& target) const;
-        AForm* createRobotomyRequestForm(const std::string& target) const;
-        AForm* createShrubberyCreationForm(const std::string& target) const;
+	private:
+		AForm* createPresidentialPardonForm(const std::string& target) const;
+		AForm* createRobotomyRequestForm(const std::string& target) const;
+		AForm* createShrubberyCreationForm(const std::string& target) const;
 
-    public:
-        Intern();
-        Intern(const Intern& other);
-        Intern& operator=(const Intern& other);
-        ~Intern();
+	public:
+		Intern();
+		Intern(const Intern&);
+		Intern& operator=(const Intern&);
+		~Intern();
 
-        AForm* makeForm(const std::string& formName, const std::string& target);
+		AForm* makeForm(const std::string& formName, const std::string& target) const;
 
-        class FormNotFoundException : public std::exception {
-            public:
-                virtual const char* what() const throw();
-        };
+		class FormNotFoundException : public std::exception {
+			public:
+				virtual const char* what() const throw();
+		};
 };
 
 #endif
