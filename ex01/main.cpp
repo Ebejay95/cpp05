@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jeberle <jeberle@student.42.fr>            +#+  +:+       +#+        */
+/*   By: jonathaneberle <jonathaneberle@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/25 09:19:02 by jeberle           #+#    #+#             */
-/*   Updated: 2024/12/03 12:54:08 by jeberle          ###   ########.fr       */
+/*   Updated: 2024/12/04 11:34:39 by jonathanebe      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,24 @@ int main() {
 	catch (const std::exception& e) {
 		std::cout << "Exception: " << e.what() << std::endl;
 	}
+	try {
+		Form f("Test Form", 50, 25);
+		Bureaucrat b1("High Grade", 1);
+		b1.signForm(f);
+		b1.signForm(f);
+		std::cout << f << std::endl;
+	} catch (const std::exception& e) {
+		std::cout << "Exception: " << e.what() << std::endl;
+	}
 
+	try {
+		Form f1("Edge Form", 1, 150);
+		Bureaucrat b1("Max Grade", 1);
+		Bureaucrat b2("Min Grade", 150);
+		b1.signForm(f1);
+		b2.signForm(f1);
+	} catch (const std::exception& e) {
+		std::cout << "Exception: " << e.what() << std::endl;
+	}
 	return 0;
 }
