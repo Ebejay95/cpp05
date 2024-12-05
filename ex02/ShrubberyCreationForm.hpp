@@ -6,7 +6,7 @@
 /*   By: jeberle <jeberle@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/03 13:19:42 by jeberle           #+#    #+#             */
-/*   Updated: 2024/12/04 18:02:22 by jeberle          ###   ########.fr       */
+/*   Updated: 2024/12/05 13:05:07 by jeberle          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,13 +19,13 @@
 class ShrubberyCreationForm : public AForm {
 	private:
 		std::string target;
+		ShrubberyCreationForm();
 
 	public:
-		ShrubberyCreationForm();
-		ShrubberyCreationForm(std::string target = "default");
+		ShrubberyCreationForm(std::string target);
 		ShrubberyCreationForm(const ShrubberyCreationForm& other);
 		ShrubberyCreationForm& operator=(const ShrubberyCreationForm& other);
-		virtual ~ShrubberyCreationForm();
+		~ShrubberyCreationForm();
 
 		void execute(Bureaucrat const & executor) const;
 };

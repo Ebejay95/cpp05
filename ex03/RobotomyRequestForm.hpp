@@ -6,7 +6,7 @@
 /*   By: jeberle <jeberle@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/03 13:16:09 by jeberle           #+#    #+#             */
-/*   Updated: 2024/12/04 18:03:26 by jeberle          ###   ########.fr       */
+/*   Updated: 2024/12/05 13:28:47 by jeberle          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,18 +14,21 @@
 #define ROBOTOMYREQUESTFORM_HPP
 
 #include "./AForm.hpp"
+#include <cstdlib>
+#include <ctime>
+#include <iostream>
 
 class RobotomyRequestForm : public AForm {
 	private:
 		std::string target;
-		static int counter;
+		RobotomyRequestForm();
+		static bool initialized;
 
 	public:
-		RobotomyRequestForm();
-		RobotomyRequestForm(std::string target = "default");
+		RobotomyRequestForm(std::string target);
 		RobotomyRequestForm(const RobotomyRequestForm& other);
 		RobotomyRequestForm& operator=(const RobotomyRequestForm& other);
-		virtual ~RobotomyRequestForm();
+		~RobotomyRequestForm();
 
 		void execute(Bureaucrat const & executor) const;
 };

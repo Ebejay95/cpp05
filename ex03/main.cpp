@@ -6,7 +6,7 @@
 /*   By: jeberle <jeberle@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/04 11:39:59 by jonathanebe       #+#    #+#             */
-/*   Updated: 2024/12/04 18:07:37 by jeberle          ###   ########.fr       */
+/*   Updated: 2024/12/05 13:32:01 by jeberle          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -137,8 +137,8 @@ void testIntern() {
 			delete form3;
 		}
 
-		// Test invalid form name
-		AForm* form4 = intern.makeForm("invalid form", "Target");
+		// Test other form name
+		AForm* form4 = intern.makeForm("other form", "Target");
 		if (form4) {
 			delete form4;
 		}
@@ -157,19 +157,19 @@ int main() {
 
 	std::cout << "\n=== Testing Edge Cases ===" << std::endl;
 	try {
-		// Test with invalid grades
-		ShrubberyCreationForm invalidForm1("invalid");
-		RobotomyRequestForm invalidForm2("invalid");
-		PresidentialPardonForm invalidForm3("invalid");
+		// Test with other grades
+		ShrubberyCreationForm otherForm1("other");
+		RobotomyRequestForm otherForm2("other");
+		PresidentialPardonForm otherForm3("other");
 
 		Bureaucrat superLow("SuperLow", 150);
 		Bureaucrat superHigh("SuperHigh", 1);
 
 		// Test multiple operations
-		superLow.signForm(invalidForm1);
-		superLow.executeForm(invalidForm1);
-		superHigh.signForm(invalidForm1);
-		superHigh.executeForm(invalidForm1);
+		superLow.signForm(otherForm1);
+		superLow.executeForm(otherForm1);
+		superHigh.signForm(otherForm1);
+		superHigh.executeForm(otherForm1);
 	}
 	catch (std::exception & e) {
 		std::cout << "Exception: " << e.what() << std::endl;

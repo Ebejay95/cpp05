@@ -6,7 +6,7 @@
 /*   By: jeberle <jeberle@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/03 13:05:59 by jeberle           #+#    #+#             */
-/*   Updated: 2024/12/03 13:48:46 by jeberle          ###   ########.fr       */
+/*   Updated: 2024/12/05 13:07:28 by jeberle          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,18 +114,18 @@ int main() {
 	std::cout << "\n=== Testing Edge Cases ===" << std::endl;
 	try {
 		// Test with invalid grades
-		ShrubberyCreationForm invalidForm1("invalid");
-		RobotomyRequestForm invalidForm2("invalid");
-		PresidentialPardonForm invalidForm3("invalid");
+		ShrubberyCreationForm otherForm1("other");
+		RobotomyRequestForm otherForm2("other");
+		PresidentialPardonForm otherForm3("other");
 
 		Bureaucrat superLow("SuperLow", 150);
 		Bureaucrat superHigh("SuperHigh", 1);
 
 		// Test multiple operations
-		superLow.signForm(invalidForm1);
-		superLow.executeForm(invalidForm1);
-		superHigh.signForm(invalidForm1);
-		superHigh.executeForm(invalidForm1);
+		superLow.signForm(otherForm1);
+		superLow.executeForm(otherForm1);
+		superHigh.signForm(otherForm1);
+		superHigh.executeForm(otherForm1);
 	}
 	catch (std::exception & e) {
 		std::cout << "Exception: " << e.what() << std::endl;

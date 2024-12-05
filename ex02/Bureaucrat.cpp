@@ -6,7 +6,7 @@
 /*   By: jeberle <jeberle@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/03 13:05:40 by jeberle           #+#    #+#             */
-/*   Updated: 2024/12/03 13:56:17 by jeberle          ###   ########.fr       */
+/*   Updated: 2024/12/05 13:02:24 by jeberle          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,6 @@ Bureaucrat::Bureaucrat(const Bureaucrat& other) : name(other.name), grade(other.
 
 Bureaucrat& Bureaucrat::operator=(const Bureaucrat& other) {
 	if (this != &other) {
-		// name is const, so we can't assign it
 		grade = other.grade;
 	}
 	return *this;
@@ -37,7 +36,6 @@ Bureaucrat::~Bureaucrat() {}
 const std::string Bureaucrat::getName(void) const {
 	return name;
 }
-
 int Bureaucrat::getGrade(void) const {
 	return grade;
 }

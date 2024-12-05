@@ -6,26 +6,34 @@
 /*   By: jeberle <jeberle@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/22 20:59:31 by jeberle           #+#    #+#             */
-/*   Updated: 2024/12/03 12:51:51 by jeberle          ###   ########.fr       */
+/*   Updated: 2024/12/05 11:20:12 by jeberle          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./Bureaucrat.hpp"
+
 int main() {
+
+	std::cout << "\n=== Testing default constructor ===" << std::endl;
+	try {
+		Bureaucrat default_bureaucrat;
+		std::cout << "Default bureaucrat: " << default_bureaucrat << std::endl;
+	}
+	catch(const std::exception &e) {
+		std::cerr << "Exception caught: " << e.what() << std::endl;
+	}
+
 	std::cout << "=== Testing basic constructor and operators ===" << std::endl;
 	try {
 		Bureaucrat john("John", 50);
 		std::cout << john << std::endl;
 
-		// Test copy constructor
 		Bureaucrat johnCopy(john);
 		std::cout << "Copy of John: " << johnCopy << std::endl;
 
-		// Test assignment operator
 		Bureaucrat assignedJohn = john;
 		std::cout << "Assigned copy of John: " << assignedJohn << std::endl;
 
-		// Verify they're independent
 		johnCopy.incrementGrade();
 		std::cout << "Original John: " << john << std::endl;
 		std::cout << "Modified copy: " << johnCopy << std::endl;
@@ -74,10 +82,12 @@ int main() {
 		std::cout << "Created bureaucrat with grade 1: " << top << std::endl;
 		std::cout << "Attempting to increment grade 1..." << std::endl;
 		top.incrementGrade();
+		std::cout << "Updated bureaucrat with grade 1: " << top << std::endl;
 	}
 	catch(const std::exception &e) {
 		std::cerr << "Exception caught: " << e.what() << std::endl;
 	}
+
 
 	try {
 		// Test grade 150 (lowest possible)
@@ -85,15 +95,7 @@ int main() {
 		std::cout << "Created bureaucrat with grade 150: " << bottom << std::endl;
 		std::cout << "Attempting to decrement grade 150..." << std::endl;
 		bottom.decrementGrade();
-	}
-	catch(const std::exception &e) {
-		std::cerr << "Exception caught: " << e.what() << std::endl;
-	}
-
-	std::cout << "\n=== Testing default constructor ===" << std::endl;
-	try {
-		Bureaucrat default_bureaucrat;
-		std::cout << "Default bureaucrat: " << default_bureaucrat << std::endl;
+		std::cout << "Updated bureaucrat with grade 150: " << bottom << std::endl;
 	}
 	catch(const std::exception &e) {
 		std::cerr << "Exception caught: " << e.what() << std::endl;

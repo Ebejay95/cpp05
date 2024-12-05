@@ -6,7 +6,7 @@
 /*   By: jeberle <jeberle@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/04 11:41:32 by jonathanebe       #+#    #+#             */
-/*   Updated: 2024/12/04 18:07:28 by jeberle          ###   ########.fr       */
+/*   Updated: 2024/12/05 13:18:57 by jeberle          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,25 +17,31 @@
 #include "PresidentialPardonForm.hpp"
 #include "RobotomyRequestForm.hpp"
 #include "ShrubberyCreationForm.hpp"
+#include <string>
 
 class Intern {
-	private:
-		AForm* createPresidentialPardonForm(const std::string& target) const;
-		AForm* createRobotomyRequestForm(const std::string& target) const;
-		AForm* createShrubberyCreationForm(const std::string& target) const;
+private:
+	struct FormType {
+		std::string name;
+		AForm* (*creator)(const std::string&);
+	};
 
-	public:
-		Intern();
-		Intern(const Intern&);
-		Intern& operator=(const Intern&);
-		~Intern();
+	static AForm* createPresidentialPardon(const std::string& target);
+	static AForm* createRobotomyRequest(const std::string& target);
+	static AForm* createShrubberyCreation(const std::string& target);
 
-		AForm* makeForm(const std::string& formName, const std::string& target) const;
+public:
+	Intern();
+	Intern(const Intern& other);
+	Intern& operator=(const Intern& other);
+	~Intern();
 
-		class FormNotFoundException : public std::exception {
-			public:
-				virtual const char* what() const throw();
-		};
+	AForm* makeForm(const std::string& formName, const std::string& target) const;
+
+	class FormNotFoundException : public std::exception {
+		public:
+			virtual const char* what() const throw();
+	};
 };
 
 #endif

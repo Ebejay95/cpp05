@@ -6,7 +6,7 @@
 /*   By: jeberle <jeberle@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/25 09:19:04 by jeberle           #+#    #+#             */
-/*   Updated: 2024/12/04 17:52:23 by jeberle          ###   ########.fr       */
+/*   Updated: 2024/12/05 12:59:57 by jeberle          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,8 +46,8 @@ class Bureaucrat {
 			public:
 				virtual const char* what() const throw();
 		};
-
-		friend std::ostream& operator<<(std::ostream& os, const Bureaucrat& bureaucrat);
 };
+
+std::ostream& operator<<(std::ostream& os, const Bureaucrat& bureaucrat);
 
 #endif

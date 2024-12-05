@@ -6,7 +6,7 @@
 /*   By: jeberle <jeberle@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/03 13:16:34 by jeberle           #+#    #+#             */
-/*   Updated: 2024/12/04 18:00:56 by jeberle          ###   ########.fr       */
+/*   Updated: 2024/12/05 13:03:38 by jeberle          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,13 +18,13 @@
 class PresidentialPardonForm : public AForm {
 	private:
 		std::string target;
+		PresidentialPardonForm();
 
 	public:
-		PresidentialPardonForm();
-		PresidentialPardonForm(std::string target = "default");
+		PresidentialPardonForm(std::string target);
 		PresidentialPardonForm(const PresidentialPardonForm& other);
 		PresidentialPardonForm& operator=(const PresidentialPardonForm& other);
-		virtual ~PresidentialPardonForm();
+		~PresidentialPardonForm();
 
 		void execute(Bureaucrat const & executor) const;
 };

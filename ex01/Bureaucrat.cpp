@@ -6,7 +6,7 @@
 /*   By: jeberle <jeberle@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/25 09:19:05 by jeberle           #+#    #+#             */
-/*   Updated: 2024/12/04 17:50:09 by jeberle          ###   ########.fr       */
+/*   Updated: 2024/12/05 13:01:41 by jeberle          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,6 @@ Bureaucrat::~Bureaucrat() {}
 const std::string Bureaucrat::getName(void) const {
 	return name;
 }
-
 int Bureaucrat::getGrade(void) const {
 	return grade;
 }
